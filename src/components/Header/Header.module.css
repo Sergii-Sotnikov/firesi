@@ -1,0 +1,103 @@
+.header {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  height: 70px;
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 150px;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo-text-header {
+  position: relative;
+  margin-left: 52px;
+  font-size: 40px;
+  line-height: 1.3;
+  color: #000000;
+  text-shadow: -0.95px -0.95px 0 #ffb53f, 0.95px -0.95px 0 #ffb53f,
+    -0.95px 0.95px 0 #ffb53f, 0.95px 0.95px 0 #ffb53f;
+}
+
+.header-logo-fire {
+  position: absolute;
+  top: -12px;
+  left: -43px;
+}
+
+.header-logo-line {
+  position: absolute;
+  top: 10px;
+  left: 35px;
+}
+
+.span-btn-header-one {
+  margin-left: 25px;
+}
+
+.span-btn-header-two {
+  color: #e00d1d;
+}
+
+.btn-header {
+  position: relative;
+  font-size: 25px;
+  line-height: 1.5;
+  width: 262px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+  background-image: url("/img/btn_fire_background.png");
+  background-size: 262px 110px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  color: #000000;
+  text-shadow: -0.59px -0.59px 0 #ffb53f, 0.59px -0.59px 0 #ffb53f,
+    -0.59px 0.59px 0 #ffb53f, 0.59px 0.59px 0 #ffb53f;
+  transition: all 300ms ease;
+}
+
+.btn-header:hover {
+  box-shadow: 0 4px 10px rgba(224, 13, 29, 0.7); /* червона тінь */
+  transform: translateY(-2px); /* трохи піднімається */
+  transition: all 0.3s ease;
+}
+
+.fire-btn-back {
+  position: absolute;
+  top: -9px;
+  left: 137px;
+  width: 29px;
+  height: 42px;
+}
+
+.header-btn-fire {
+  position: absolute;
+  top: -11px;
+  left: 134px;
+}
+
+.fire-btn-line {
+  position: absolute;
+  top: 14px;
+  left: 186px;
+  width: 35px;
+  height: 1.7px;
+}

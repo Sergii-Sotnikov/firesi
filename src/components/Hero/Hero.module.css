@@ -1,0 +1,68 @@
+.hero {
+  padding-top: 65px;
+  padding-bottom: 55px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 150px;
+}
+
+.container-hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-hero {
+  font-family: "Alumni Sans SC", sans-serif;
+font-weight: 400;
+font-size: 48px;
+line-height: 1;
+letter-spacing: 0.19em;
+text-align: center;
+text-transform: uppercase;
+color: #E00D1D;
+margin-bottom: 18px;
+}
+
+.title-text-hero {
+  font-family: "Cera Stencil PRO";
+font-weight: 900;
+font-style: Black;
+font-size: 40px;
+line-height: 1;
+letter-spacing: 0;
+}
+.title-second-hero {
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  font-weight: 400;
+  font-size: 160px;
+  line-height: 1.36;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #0e1118, #ffffff, #ffffff, #0e1118);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.information-hero {
+}
+.description-hero {
+}
+.description-hero-logo {
+}
+.description-hero-text {
+}
+.description-text {
+}
+.description-hero-btn {
+}
+.description-hero-addtext {
+}
+.description-hero-addtext-point {
+}
