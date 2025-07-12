@@ -4,6 +4,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap");
 @import url(https://db.onlinewebfonts.com/c/5346a0951717ff8ed8e9e0253f884d72?family=Cera+Stencil+PRO);
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,

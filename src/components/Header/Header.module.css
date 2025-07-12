@@ -3,20 +3,19 @@
   background: rgba(255, 255, 255, 0.1);
   height: 70px;
   width: 100%;
+  padding: 10px 0;
 }
 
-.container {
+
+.container-header {
   margin: 0 auto;
   width: 100%;
   max-width: 1440px;
   padding: 0 150px;
-}
-
-.container-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  height: 100%;
 }
 
 .logo-text-header {
@@ -71,13 +70,12 @@
   color: #000000;
   text-shadow: -0.59px -0.59px 0 #ffb53f, 0.59px -0.59px 0 #ffb53f,
     -0.59px 0.59px 0 #ffb53f, 0.59px 0.59px 0 #ffb53f;
-  transition: all 300ms ease;
+  transition: all 0.3s ease;
 }
 
 .btn-header:hover {
-  box-shadow: 0 4px 10px rgba(224, 13, 29, 0.7); /* червона тінь */
-  transform: translateY(-2px); /* трохи піднімається */
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(224, 13, 29, 0.7);
+  transform: translateY(-2px);
 }
 
 .fire-btn-back {

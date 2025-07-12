@@ -8,7 +8,7 @@ import btnFireBg from "../../../public/img/btn_fire_background.png";
 export default function Header() {
   return (
     <section className={css.header}>
-      <div className={`${css.container} ${css["container-header"]}`}>
+      <div className={css["container-header"]}>
         <p className={css["logo-text-header"]}>
           Firesi
           <img
