@@ -1,6 +1,8 @@
 .hero {
   padding-top: 65px;
-  padding-bottom: 50px;
+  padding-bottom: 186px;
+  z-index: 0;
+   overflow: visible;
 }
 
 .container {
@@ -184,4 +186,19 @@
 
 .description-hero-btn-icon {
   fill: #ffffff;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+    top: 1038px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1440px;
+  height: 620px;
+  background-image: url("/img/webp/fire_bg.webp");
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  z-index: -1;
 }
