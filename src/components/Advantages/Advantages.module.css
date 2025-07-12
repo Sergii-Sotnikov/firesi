@@ -33,8 +33,8 @@
 .advantages-title-text {
   width: 100%;
   position: absolute;
-  top: 135px;
-  left: 9px;
+  top: 155px;
+  left: -14px;
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 110px;
@@ -49,7 +49,7 @@
   position: relative;
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 128px;
+  font-size: 110px;
   line-height: 1.5;
   letter-spacing: 0;
   text-align: left;
@@ -64,8 +64,8 @@
 
 .fire-advantages-line {
   position: absolute;
-  top: 51px;
-  left: 926px;
-  width: 179px;
-  height: 10px;
+  top: 44px;
+  left: 931px;
+  width: 154px;
+  height: 9px;
 }
