@@ -1,4 +1,5 @@
 .hero {
+  
   padding-top: 65px;
   padding-bottom: 186px;
   z-index: 0;
@@ -156,7 +157,7 @@
   justify-content: center;
   border: 1.7px solid rgb(255, 255, 255);
   border-radius: 7px;
-  background-color: #000000;
+  background-color: transparent;
   font-family: "Cera Stencil PRO";
   font-weight: 400;
   font-size: 20px;
