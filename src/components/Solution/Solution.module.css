@@ -38,5 +38,16 @@ font-weight: 400;
 font-size: 24px;
 line-height: 1.5;
 letter-spacing: 0;
+margin-bottom: 48px;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 48px;
+    column-gap: 57px;
+    justify-content: center
+    
 }
 

@@ -19,12 +19,96 @@ export default function Solution() {
           діяти швидко та рішуче.
         </p>
         <ul className={css.list}>
-            <li className={css.item}><img src="" alt="" /></li>
-            <li className={css.item}><img src="" alt="" /></li>
-            <li className={css.item}><img src="" alt="" /></li>
-            <li className={css.item}><img src="" alt="" /></li>
-            <li className={css.item}><img src="" alt="" /></li>
-            <li className={css.item}><img src="" alt="" /></li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_equipment.webp 1x, /img/webp/fire_equipment@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_equipment.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_kitchen.webp 1x, /img/webp/fire_kitchen@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_kitchen.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_electrical_panel.webp 1x, /img/webp/fire_electrical_panel@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_electrical_panel.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_computer.webp 1x, /img/webp/fire_computer@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_computer.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_scooter.webp 1x, /img/webp/fire_scooter@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_scooter.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
+          <li className={css.item}>
+            <picture>
+              <source
+                srcSet="/img/webp/fire_car.webp 1x, /img/webp/fire_car@2x.webp 2x"
+                type="image/webp"
+              />
+              <img
+                src="/img/webp/fire_car.webp"
+                alt="Fire equipment"
+                className="image"
+                width={300}
+                height={250}
+              />
+            </picture>
+          </li>
         </ul>
       </div>
     </section>
