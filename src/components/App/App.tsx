@@ -1,8 +1,10 @@
 import css from "./App.module.css";
 import Header from "../Header/Header";
 import Hero from "../Hero/Hero";
-import Fire from "./Fire/Fire";
+import Fire from "../Fire/Fire";
 import Advantages from "../Advantages/Advantages";
+import Video from "../Video/Video";
+import Solution from "../Solution/Solution";
 
 export default function App() {
   return (
@@ -12,6 +14,8 @@ export default function App() {
         <Hero/>
         <Fire/>
         <Advantages/>
+        <Video/>
+        <Solution/>
       </main>
     </div>
   );
