@@ -36,8 +36,8 @@
 
 .header-logo-line {
   position: absolute;
-  top: 10px;
-  left: 35px;
+    top: 11px;
+    left: 33px;
 }
 
 .span-btn-header-one {
@@ -94,8 +94,8 @@
 
 .fire-btn-line {
   position: absolute;
-  top: 14px;
-  left: 186px;
+    top: 14px;
+    left: 184px;
   width: 35px;
   height: 1.7px;
 }
