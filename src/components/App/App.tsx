@@ -5,6 +5,7 @@ import Advantages from "../Advantages/Advantages";
 import Video from "../Video/Video";
 import Solution from "../Solution/Solution";
 import Arguments from "../Arguments/Arguments";
+import Fire from "../Fire/Fire";
 
 export default function App() {
   return (
@@ -12,9 +13,7 @@ export default function App() {
       <main className={css.main}>
         <Header />
         <Hero />
-        <section className={css.fireBgWrapper}>
-          <div className={css.fireBg}></div>
-        </section>
+        <Fire/>
         <Advantages />
         <Video />
         <Solution />

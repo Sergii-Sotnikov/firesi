@@ -48,7 +48,7 @@ export default function Hero() {
               </span>
             </button>
           </div>
-          <picture>
+          <picture className={css["picture-hero"]}>
             <source
               srcSet="/img/webp/extinguisher.webp 1x, /img/webp/extinguisher@2x.webp 2x"
               type="image/webp"
