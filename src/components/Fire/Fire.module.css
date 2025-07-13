@@ -1,20 +1,18 @@
 .fire {
-position: relative;
-height: 372px;
-z-index: 0;
+  position: relative;
+  height: 372px;
+  overflow: visible;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  margin-top: -162px;
+  margin-bottom: 163px;
 }
 
-.fire::after {
-  content: "";
-  position: absolute;
-      top: -162px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1440px;
+.fireImage {
+  width: 100vw;
   height: 620px;
-  background-image: url("/img/webp/fire_bg.webp");
-  background-repeat: no-repeat;
-  background-size:contain;
-  background-position: center;
+  object-fit: contain;
   z-index: -1;
 }
