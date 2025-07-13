@@ -6,7 +6,6 @@
   padding: 10px 0;
 }
 
-
 .container-header {
   margin: 0 auto;
   width: 100%;
@@ -36,12 +35,12 @@
 
 .header-logo-line {
   position: absolute;
-    top: 11px;
-    left: 33px;
+  top: 11px;
+  left: 33px;
 }
 
 .span-btn-header-one {
-  margin-left: 25px;
+  margin-left: 23px;
 }
 
 .span-btn-header-two {
@@ -73,6 +72,18 @@
   transition: all 0.3s ease;
 }
 
+.btn-header::after {
+  content: "";
+  background-image: url(/img/btn-fire.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 34px;
+  height: 47px;
+  top: -10px;
+  left: 152px;
+}
+
 .btn-header:hover {
   box-shadow: 0 4px 10px rgba(224, 13, 29, 0.7);
   transform: translateY(-2px);
@@ -87,15 +98,12 @@
 }
 
 .header-btn-fire {
-  position: absolute;
-  top: -11px;
-  left: 134px;
 }
 
 .fire-btn-line {
   position: absolute;
-    top: 14px;
-    left: 184px;
+  top: 14px;
+  left: 184px;
   width: 35px;
   height: 1.7px;
 }

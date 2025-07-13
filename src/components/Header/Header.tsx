@@ -1,8 +1,6 @@
 import css from "./Header.module.css";
 import fire from "../../../public/img/fire.png";
 import fireLogo from "../../../public/img/line_logo.png";
-import btnLine from "../../../public/img/btn_line.png";
-import btnFire from "../../../public/img/btn-fire.png";
 import btnFireBg from "../../../public/img/btn_fire_background.png";
 
 export default function Header() {
@@ -28,19 +26,7 @@ export default function Header() {
           />
         </p>
         <button className={css["btn-header"]}>
-          КУПИТИ
-          <img
-            className={css["fire-btn-line"]}
-            src={btnLine}
-            alt="Button fire line"
-          />
-          <img
-            className={css["header-btn-fire"]}
-            src={btnFire}
-            alt="Fire logo"
-            width={34}
-            height={47}
-          />
+          ЗАМОВИТИ
           <span className={css["span-btn-header-one"]}>Fire</span>
           <span className={css["span-btn-header-two"]}>si</span>
         </button>
