@@ -27,6 +27,31 @@
     -0.95px 0.95px 0 #ffb53f, 0.95px 0.95px 0 #ffb53f;
 }
 
+.logo-text-header::after {
+  content: "";
+  position: absolute;
+  background-image: url(/img/fire.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 44px;
+  height: 53px;
+  top: -10px;
+  left: -43px;
+}
+
+.logo-text-header::before {
+  content: "";
+  position: absolute;
+  background-image: url(/img/line_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 54px;
+  height: 3px;
+top: 11px;
+    left: 32px;
+}
+
+
 .header-logo-fire {
   position: absolute;
   top: -12px;
@@ -82,6 +107,18 @@
   height: 47px;
   top: -10px;
   left: 152px;
+}
+
+.btn-header::before {
+  content: "";
+  background-image: url(/img/btn_line.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 36px;
+  height: 2px;
+  top: 14px;
+  left: 204px;
 }
 
 .btn-header:hover {

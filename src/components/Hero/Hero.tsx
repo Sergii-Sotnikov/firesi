@@ -20,11 +20,6 @@ export default function Hero() {
             </span>
             <p className={css["description-hero-logo"]}>
               Fire<span className={css["description-hero-logo-span"]}>si</span>
-              <img
-                className={css["fire-hero-line"]}
-                src="/img/hero_line.png"
-                alt="Hero fire line"
-              />
             </p>
             <p className={css["description-hero-text"]}>
               Зупиніть будь яку пожежу за лічені секунди.

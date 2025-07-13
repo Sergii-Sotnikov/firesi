@@ -68,6 +68,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .description-hero {
   position: relative;
   display: flex;
@@ -92,8 +93,8 @@
   line-height: 1;
   letter-spacing: 0;
   color: #ffb53f;
-  top: 544px;
-  left: 1119px;
+    top: 544px;
+    left: 1129px;
 }
 
 .description-hero-addtext-point {
@@ -112,6 +113,21 @@
     -2.56px 2.56px #ffb53f, 2.56px 2.56px #ffb53f;
   color: #000000;
 }
+
+.description-hero-logo::after {
+  position: absolute;
+  content: "";
+  background-image: url(/img/hero_line.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 179px;
+  height: 8px;
+    top: 53px;
+    left: 109px;
+}
+
+
+
 .description-hero-logo-span {
   color: #e00d1d;
 }
