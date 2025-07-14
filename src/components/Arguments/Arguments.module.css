@@ -1,6 +1,10 @@
 .arguments {
   padding-top: 21px;
   padding-bottom: 75px;
+  background-image: url(/img/webp/fire_big_bg.webp);
+  background-repeat: no-repeat;
+  background-position: center 463px;
+  background-size: 1440px 650px;
 }
 
 .container {
