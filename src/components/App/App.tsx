@@ -6,6 +6,7 @@ import Video from "../Video/Video";
 import Solution from "../Solution/Solution";
 import Arguments from "../Arguments/Arguments";
 import Fire from "../Fire/Fire";
+import Choice from "../Сhoice/Сhoice";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Video />
         <Solution />
         <Arguments />
+        <Choice/>
       </main>
     </div>
   );
