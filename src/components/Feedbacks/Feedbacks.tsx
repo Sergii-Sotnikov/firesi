@@ -77,9 +77,9 @@ export default function Feedbacks() {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
           }}
-          onAutoplayTimeLeft={(_, time, progress) => {
-            setProgress(1 - progress); 
-          }}
+          onAutoplayTimeLeft={(_, __, progress) => {
+  setProgress(1 - progress);
+}}
         >
           <SwiperSlide className={css.slide}>
             <p className={css.feedbacksGroupRating}>★★★★★</p>
