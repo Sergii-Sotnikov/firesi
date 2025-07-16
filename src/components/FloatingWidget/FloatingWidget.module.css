@@ -1,0 +1,33 @@
+.floatingWrapper {
+  position: fixed;
+  bottom: 5px;
+  width: 150px;
+  height: 80px;
+  right: calc((100vw - 1440px) / 2 - 175px); /* змісти за межу контейнера */
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.call,
+.messenger{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
