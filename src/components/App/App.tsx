@@ -9,21 +9,36 @@ import Fire from "../Fire/Fire";
 import Choice from "../Сhoice/Сhoice";
 import Feedbacks from "../Feedbacks/Feedbacks";
 import FloatingWidget from "../FloatingWidget/FloatingWidget";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
 
 export default function App() {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+
+  const openModal = (content: React.ReactNode) => {
+    setIsOpenModal(true);
+    setModalContent(content);
+  };
+  const closeModal = () => {
+    setIsOpenModal(false);
+    setModalContent(null);
+  };
+
   return (
     <div className={css.app}>
       <main className={css.main}>
         <Header />
         <Hero />
-        <Fire/>
+        <Fire />
         <Advantages />
         <Video />
         <Solution />
         <Arguments />
-        <Choice/>
-        <Feedbacks/>
-        <FloatingWidget/>
+        <Choice />
+        <Feedbacks />
+        <FloatingWidget openModal={openModal} />
+        {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
       </main>
     </div>
   );

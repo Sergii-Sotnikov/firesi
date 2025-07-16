@@ -3,8 +3,13 @@ import { IoIosCall } from "react-icons/io";
 import { TbMessageCircleFilled } from "react-icons/tb";
 import { useEffect, useState } from "react";
 
-export default function FloatingWidget(){
+interface FloatingWidgetProps {
+  openModal: (content: React.ReactNode) => void;
+}
+
+export default function FloatingWidget( { openModal }: FloatingWidgetProps){
     const [isShaking, setIsShaking] = useState(false);
+
 
       useEffect(() => {
     const interval = setInterval(() => {
@@ -17,12 +22,18 @@ export default function FloatingWidget(){
 
     return(
         <div className={css.floatingWrapper}>
-            <button className={css.call}>
+            <button className={css.call} onClick={() =>
+                openModal(
+                    <>
+                    <p>HELLO</p>
+                    </>
+                )
+            }>
                 <IoIosCall size={30} className={isShaking ? css.shake : ""} />
             </button>
             <button className={css.messenger}>
                 <TbMessageCircleFilled size={30}/>
             </button>
-        </div>
-    )
-}
+        </div>)
+
+      }
