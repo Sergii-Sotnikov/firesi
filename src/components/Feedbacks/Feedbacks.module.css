@@ -1,0 +1,162 @@
+.feedbacks {
+  padding-top: 51px;
+  padding-bottom: 500px;
+}
+
+.container {
+  width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.title {
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  font-weight: 400;
+  font-size: 220px;
+  line-height: 0.89;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    rgb(14, 17, 24),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgb(14, 17, 24)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.titleAddtext {
+  position: absolute;
+  font-family: "Alumni Sans SC", sans-serif;
+  font-weight: 400;
+  width: 900px;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 0.19em;
+  color: #e00d1d;
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.feedbacksGroup {
+  padding: 0 150px;
+}
+
+.feedbacksGroupTitle {
+  font-family: "Cera Stencil PRO";
+  font-weight: 900;
+  font-style: Black;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.slide {
+  padding: 24px 16px;
+  width: 308px;
+  height: 291px;
+  border-radius: 25px;
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.swiper {
+  width: 956px;
+}
+
+.feedbacksGroupRating {
+  color: #ffb53f;
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: 0.45em;
+  margin-bottom: 7px;
+}
+
+.feedbacksGroupUser {
+  font-family: "Cera Stencil PRO";
+  font-weight: 900;
+  font-style: Black;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.feedbacksGroupText {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+.navBtnLeft {
+  fill: #ffffff;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.nav {
+  position: relative;
+}
+
+.btnPrev,
+.btnNext {
+  color: #ffffff;
+}
+
+.prev {
+  position: absolute;
+  top: 119px;
+  left: 185px;
+}
+
+.next {
+  position: absolute;
+  top: 119px;
+  left: 1217px;
+}
+
+.btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.progressWrapper {
+  height: 4px;
+  width: 100%;
+  background: #eee;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progressBar {
+  height: 100%;
+  width: 100%;
+  background: #ff6b00; /* або твій бренд-колір */
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+}

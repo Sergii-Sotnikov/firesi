@@ -7,6 +7,7 @@ import Solution from "../Solution/Solution";
 import Arguments from "../Arguments/Arguments";
 import Fire from "../Fire/Fire";
 import Choice from "../Сhoice/Сhoice";
+import Feedbacks from "../Feedbacks/Feedbacks";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Solution />
         <Arguments />
         <Choice/>
+        <Feedbacks/>
       </main>
     </div>
   );

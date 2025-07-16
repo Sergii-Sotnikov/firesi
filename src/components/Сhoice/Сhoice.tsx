@@ -88,7 +88,7 @@ export default function Choice() {
             </div>
           </li>
 
-          <li className={css.productItem}>
+                    <li className={css.productItem}>
             <p className={css.productTitle}>ВОГНЕГАСНИК</p>
             <p className={css.productName}>
               Fire<span className={css.productNameLogo}>si</span> FRSE-FS
@@ -137,27 +137,40 @@ export default function Choice() {
                   </li>
                 </ul>
               </div>
+              <picture className={css.productImage}>
+                <source
+                  srcSet="/img/webp/FRSE-F2.webp 1x, /img/webp/FRSE-F2@2x.webp 2x"
+                  type="image/webp"
+                />
+                <img
+                  src="/img/webp/FRSE-F2.webp"
+                  alt="FRSE FS"
+                />
+              </picture>
             </div>
             <div className={css.classes}>
-              <p className={css.classText}>Гасіння всіх класів пожеж:</p>
+              <p className={css.classText}>🔥 Гасіння всіх класів пожеж:</p>
               <p className={css.classText}>
-                A — тверді речовини (дерево, папір, текстиль)
+                🟩 A — тверді речовини (дерево, папір, текстиль)
               </p>
               <p className={css.classText}>
-                B — рідини (бензин, олія, лакофарби)
-              </p>
-              <p className={css.classText}>C — гази (пропан, метан, бутан)</p>
-              <p className={css.classText}>
-                D — метали (магній, натрій, титан)*
+                🟨 B — рідини (бензин, олія, лакофарби)
               </p>
               <p className={css.classText}>
-                E — електрообладнання під напругою
+                🟥 C — гази (пропан, метан, бутан)
               </p>
-              <p className={css.classText}>F — кухонні жири й масла</p>
+              <p className={css.classText}>
+                ⬛ D — метали (магній, натрій, титан)*
+              </p>
+              <p className={css.classText}>
+                🔌 E — електрообладнання під напругою
+              </p>
+              <p className={css.classText}>
+                🍳 F — кухонні жири й масла</p>
             </div>
           </li>
 
-          <li className={css.productItem}>
+                   <li className={css.productItem}>
             <p className={css.productTitle}>ВОГНЕГАСНИК</p>
             <p className={css.productName}>
               Fire<span className={css.productNameLogo}>si</span> FRSE-FS
@@ -206,23 +219,36 @@ export default function Choice() {
                   </li>
                 </ul>
               </div>
+              <picture className={css.productImage}>
+                <source
+                  srcSet="/img/webp/FRSE-F6.webp 1x, /img/webp/FRSE-F6@2x.webp 2x"
+                  type="image/webp"
+                />
+                <img
+                  src="/img/webp/FRSE-F6.webp"
+                  alt="FRSE FS"
+                />
+              </picture>
             </div>
             <div className={css.classes}>
-              <p className={css.classText}>Гасіння всіх класів пожеж:</p>
+              <p className={css.classText}>🔥 Гасіння всіх класів пожеж:</p>
               <p className={css.classText}>
-                A — тверді речовини (дерево, папір, текстиль)
+                🟩 A — тверді речовини (дерево, папір, текстиль)
               </p>
               <p className={css.classText}>
-                B — рідини (бензин, олія, лакофарби)
-              </p>
-              <p className={css.classText}>C — гази (пропан, метан, бутан)</p>
-              <p className={css.classText}>
-                D — метали (магній, натрій, титан)*
+                🟨 B — рідини (бензин, олія, лакофарби)
               </p>
               <p className={css.classText}>
-                E — електрообладнання під напругою
+                🟥 C — гази (пропан, метан, бутан)
               </p>
-              <p className={css.classText}>F — кухонні жири й масла</p>
+              <p className={css.classText}>
+                ⬛ D — метали (магній, натрій, титан)*
+              </p>
+              <p className={css.classText}>
+                🔌 E — електрообладнання під напругою
+              </p>
+              <p className={css.classText}>
+                🍳 F — кухонні жири й масла</p>
             </div>
           </li>
         </ul>
