@@ -1,6 +1,10 @@
 .feedbacks {
   padding-top: 51px;
   padding-bottom: 500px;
+  background-image: url(/img/webp/fire_big_bg.webp);
+  background-repeat: no-repeat;
+  background-position: center 467px;
+  background-size: 1440px 650px;
 }
 
 .container {
@@ -56,7 +60,7 @@
   letter-spacing: 0;
   color: #ffffff;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .slide {
@@ -155,8 +159,16 @@
 .progressBar {
   height: 100%;
   width: 100%;
-  background: #ff6b00; /* або твій бренд-колір */
+  background: #e00d1d;
   transform-origin: left center;
   transform: scaleX(0);
   transition: transform 0.1s linear;
+}
+
+.progressWrapper {
+  position: absolute;
+  width: 139px;
+  top: 812px;
+  left: 50%;
+  transform: translateX(-50%);
 }
