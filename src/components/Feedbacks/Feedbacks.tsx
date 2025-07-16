@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { NavigationOptions } from "swiper/types";
 import { useRef, useState } from "react";
 import "swiper/css";
-import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import css from "./Feedbacks.module.css";
 
