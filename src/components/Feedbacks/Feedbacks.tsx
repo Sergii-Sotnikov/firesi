@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { NavigationOptions } from "swiper/types";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -79,7 +79,7 @@ export default function Feedbacks() {
             setIsEnd(swiper.isEnd);
           }}
           onAutoplayTimeLeft={(_, time, progress) => {
-            setProgress(1 - progress); // або просто `setProgress(progress)` якщо хочеш зворотний
+            setProgress(1 - progress); 
           }}
         >
           <SwiperSlide className={css.slide}>
