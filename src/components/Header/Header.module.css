@@ -30,7 +30,7 @@
 .logo-text-header::after {
   content: "";
   position: absolute;
-  background-image: url(/img/fire.png);
+  background-image: url(/img/fire.gif);
   background-size: contain;
   background-repeat: no-repeat;
   width: 44px;
@@ -99,7 +99,7 @@ top: 11px;
 
 .btn-header::after {
   content: "";
-  background-image: url(/img/btn-fire.png);
+  background-image: url(/img/fire.gif);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
