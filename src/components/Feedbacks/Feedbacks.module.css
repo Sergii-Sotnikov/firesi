@@ -66,7 +66,7 @@
 .slide {
   padding: 24px 16px;
   width: 308px;
-  height: 291px;
+  height: 305px;
   border-radius: 25px;
   box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
     0px 1px 3px 0px rgba(0, 0, 0, 0.1);
@@ -168,7 +168,7 @@
 .progressWrapper {
   position: absolute;
   width: 139px;
-  top: 812px;
+  top: 825px;
   left: 50%;
   transform: translateX(-50%);
 }
