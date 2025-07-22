@@ -12,6 +12,7 @@ import FloatingWidget from "../FloatingWidget/FloatingWidget";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 import Faq from "../Faq/Faq";
+import Contact from "../Contact/Contact"
 
 export default function App() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -39,6 +40,7 @@ export default function App() {
         <Choice />
         <Feedbacks />
         <Faq/>
+        <Contact/>
         <FloatingWidget openModal={openModal} />
         {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
       </main>

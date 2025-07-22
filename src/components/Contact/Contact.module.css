@@ -1,0 +1,28 @@
+.contact {
+  padding-top: 75px;
+  padding-bottom: 51px;
+}
+
+.container {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 0 150px;
+}
+
+.information{
+  padding-left: 25.5px;
+  padding-right: 25.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mapWrapper {
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.contactForm{
+  width: 454px;
+}
