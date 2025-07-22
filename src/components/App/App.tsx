@@ -11,6 +11,7 @@ import Feedbacks from "../Feedbacks/Feedbacks";
 import FloatingWidget from "../FloatingWidget/FloatingWidget";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import Faq from "../Faq/Faq";
 
 export default function App() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -37,6 +38,7 @@ export default function App() {
         <Arguments />
         <Choice />
         <Feedbacks />
+        <Faq/>
         <FloatingWidget openModal={openModal} />
         {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
       </main>
