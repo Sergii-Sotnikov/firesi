@@ -4,18 +4,21 @@
 }
 
 .container {
-  width: 1440px;
+  width: 1140px;
   margin: 0 auto;
-  padding: 0 150px;
+  padding: 0;
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.information{
+.information {
   padding-left: 25.5px;
   padding-right: 25.5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .mapWrapper {
@@ -23,6 +26,93 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-.contactForm{
+.contactForm {
   width: 454px;
+}
+
+.form {
+  width: 454px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.inputName {
+  width: 100%;
+  height: 74px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-bottom: 31px;
+  border-radius: 6px;
+  background: rgba(251, 251, 251, 0.15);
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+.inputName::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: #615e5b;
+}
+
+.errorName {
+  margin-top: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #e00d1d;
+}
+
+:global(.react-tel-input.formPhone) {
+  width: 100%;
+  height: 74px;
+}
+
+:global(.react-tel-input .form-control.inputPhone) {
+  width: 100%;
+  height: 100%;
+  padding-left: 48px;
+  background-color: rgba(251, 251, 251, 0.15);
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+
+:global(.react-tel-input .flag-dropdown) {
+  background-color: transparent;
+  border: none;
+}
+
+:global(.dropdown) {
+  background-color: white;
+}
+.inputPhone {
+  width: 100%;
+  height: 74px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-bottom: 31px;
+  border-radius: 6px;
+  background: rgba(251, 251, 251, 0.15);
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #000;
 }

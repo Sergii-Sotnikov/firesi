@@ -1,6 +1,46 @@
 import css from "./Contact.module.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import type { FormikHelpers } from "formik";
+import * as Yup from "yup";
+import { toast } from "react-hot-toast";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
+interface FormCallValues {
+  name: string;
+  phone: string;
+  message: string;
+}
+
+const CallSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Ім'я має містити щонайменше 3 літери")
+    .max(20, "Ім'я надто довге (максимум 20 символів)")
+    .required("Поле ім'я є обов’язковим"),
+  phone: Yup.string()
+    .required("Номер телефону обов'язковий"),
+  message: Yup.string().max(
+    500,
+    "Повідомлення надто довге (максимум 500 символів)"
+  ),
+});
 
 export default function Contact() {
+  const initialFormCallValues: FormCallValues = {
+    name: "",
+    phone: "+38",
+    message: "",
+  };
+
+  const handleSubmit = (
+    values: FormCallValues,
+    actions: FormikHelpers<FormCallValues>
+  ) => {
+    console.log(values);
+    toast.success("Дякуємо! Ми вам зателефонуємо.");
+    actions.resetForm();
+  };
+
   return (
     <section className={css.contact}>
       <div className={css.container}>
@@ -17,8 +57,70 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+
           <div className={css.contactForm}>
-            <input type="text" />
+            <Formik
+              initialValues={initialFormCallValues}
+              onSubmit={handleSubmit}
+              validationSchema={CallSchema}
+            >
+              {({ values, setFieldValue }) => (
+                <Form className={css.form}>
+                  <div className={css.formGroup}>
+                    <Field
+                      id="name"
+                      type="text"
+                      name="name"
+                      className={css.inputName}
+                      placeholder="введіть ІМ'Я"
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="span"
+                      className={css.errorName}
+                    />
+                  </div>
+
+                  <div className={css.formPhone}>
+                    <PhoneInput
+                      country={"ua"}
+                      value={values.phone}
+                      onChange={(phone) => setFieldValue("phone", `+${phone}`)}
+                      containerClass="formPhone" // <-- ВАЖЛИВО!
+                      inputClass="inputPhone"
+                      dropdownClass="dropdown"
+                      enableSearch
+                      placeholder="+38 (0XX) XXX XXXX"
+                    />
+                    <ErrorMessage
+                      name="phone"
+                      component="span"
+                      className={css.errorPhone}
+                    />
+                  </div>
+
+                  <div className={css.formGroup}>
+                    <Field
+                      as="textarea"
+                      id="message"
+                      name="message"
+                      rows={8}
+                      className={css.textarea}
+                      placeholder="Введіть Ваше повідомлення"
+                    />
+                    <ErrorMessage
+                      name="message"
+                      component="span"
+                      className={css.error}
+                    />
+                  </div>
+
+                  <button type="submit" className={css.button}>
+                    Замовити дзвінок
+                  </button>
+                </Form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>

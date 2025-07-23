@@ -22,9 +22,7 @@
   margin-bottom: 80px;
 }
 
-.accordion {
-  background: #000000
-}
+
 .header {
   text-align: center;
 }
@@ -66,9 +64,9 @@
 
 .content{
     margin-bottom: 17px;
-
   background: rgba(255, 255, 255, 0.1);
 }
+
 
 .item[data-state="open"] .trigger {
   margin-bottom: 0;
@@ -79,3 +77,4 @@
 .item[data-state="open"] .content {
   margin-bottom: 17px;
 }
+
