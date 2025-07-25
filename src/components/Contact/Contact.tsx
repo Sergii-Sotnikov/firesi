@@ -40,38 +40,38 @@ export default function Contact() {
     message: "",
   };
 
-const handleSubmit = async (
-  values: FormCallValues,
-  actions: FormikHelpers<FormCallValues>
-) => {
-  const token = await recaptchaRef.current?.executeAsync();
-  if (!token) {
-    toast.error("Підтвердіть, що ви не робот");
-    return;
-  }
+  const handleSubmit = async (
+    values: FormCallValues,
+    actions: FormikHelpers<FormCallValues>
+  ) => {
+    const token = await recaptchaRef.current?.executeAsync();
+    if (!token) {
+      toast.error("Підтвердіть, що ви не робот");
+      return;
+    }
 
-  try {
-    await emailjs.send(
-      "service_rwiuc33",
-      "template_f3x1r9s",
-      {
-        ...values,
-        "g-recaptcha-response": token,
-        type: "Зворотній зв’язок",
-        time: new Date().toLocaleString("uk-UA"),
-        product: "FIRESI",
-      }, "sbKSEM3yamgfloOrv"
-      
-    );
+    try {
+      await emailjs.send(
+        "service_rwiuc33",
+        "template_f3x1r9s",
+        {
+          ...values,
+          "g-recaptcha-response": token,
+          type: "Зворотній зв’язок",
+          time: new Date().toLocaleString("uk-UA"),
+          product: "FIRESI",
+        },
+        "sbKSEM3yamgfloOrv"
+      );
 
-    toast.success("Дякуємо! Ми вам зателефонуємо.");
-    actions.resetForm();
-    recaptchaRef.current?.reset();
-  } catch (error) {
-    toast.error("Помилка при відправленні. Спробуйте пізніше.");
-    console.error("EmailJS error:", error);
-  }
-};
+      toast.success("Дякуємо! Ми вам зателефонуємо.");
+      actions.resetForm();
+      recaptchaRef.current?.reset();
+    } catch (error) {
+      toast.error("Помилка при відправленні. Спробуйте пізніше.");
+      console.error("EmailJS error:", error);
+    }
+  };
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -99,7 +99,7 @@ const handleSubmit = async (
               onSubmit={handleSubmit}
               validationSchema={CallSchema}
             >
-              {({ values, setFieldValue }) => (
+              {({ values, setFieldValue, isValid, dirty }) => (
                 <Form className={css.form}>
                   <div className={css.formGroup}>
                     <Field
@@ -146,12 +146,14 @@ const handleSubmit = async (
                       className={css.ErrorMessage}
                     />
                   </div>
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={myKeyRECAPTCHA}
-                    size="normal"
-                    theme="light"
-                  />
+                  {isValid && dirty && (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={myKeyRECAPTCHA}
+                      size="normal"
+                      theme="light"
+                    />
+                  )}
 
                   <button className={css.btnContact} type="submit">
                     <span className={css.btnContactSpan}>
