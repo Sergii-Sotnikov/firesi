@@ -11,6 +11,7 @@ import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 interface FormCallValues {
   name: string;
@@ -59,8 +60,8 @@ const handleSubmit = async (
         type: "Зворотній зв’язок",
         time: new Date().toLocaleString("uk-UA"),
         product: "FIRESI",
-      },
-      "sbKSEM3yamgfloOrv"
+      }, "sbKSEM3yamgfloOrv"
+      
     );
 
     toast.success("Дякуємо! Ми вам зателефонуємо.");
@@ -147,7 +148,7 @@ const handleSubmit = async (
                   </div>
                   <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey="6Lcd8Y4rAAAAAK9JbMZ9B3GP4uogmMs5kp-rNduO"
+                    sitekey={myKeyRECAPTCHA}
                     size="normal"
                     theme="light"
                   />
