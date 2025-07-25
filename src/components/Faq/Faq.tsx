@@ -6,11 +6,13 @@ import css from "./Faq.module.css";
 export default function Faq() {
   const [openItems, setOpenItems] = useState<string[]>([]);
 
-const toggleItem = (value: string) => {
-  setOpenItems((prev) =>
-    prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-  );
-};
+  const toggleItem = (value: string) => {
+    setOpenItems((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  };
 
   const renderIcon = (value: string) => {
     const isOpen = openItems.includes(value);
@@ -32,12 +34,7 @@ const toggleItem = (value: string) => {
           value={openItems}
           onValueChange={setOpenItems}
         >
-          <Accordion.Item
-            value="item-1"
-            className={css.item}
-            onMouseEnter={() => toggleItem("item-1")}
-            onMouseLeave={() => toggleItem("item-1")}
-          >
+          <Accordion.Item value="item-1" className={css.item}>
             <Accordion.Header className={css.header}>
               <Accordion.Trigger className={css.trigger}>
                 Можна в машину?
@@ -61,12 +58,7 @@ const toggleItem = (value: string) => {
             </Accordion.Content>
           </Accordion.Item>
 
-          <Accordion.Item
-            value="item-2"
-            className={css.item}
-            onMouseEnter={() => toggleItem("item-2")}
-            onMouseLeave={() => toggleItem("item-2")}
-          >
+          <Accordion.Item value="item-2" className={css.item}>
             <Accordion.Header className={css.header}>
               <Accordion.Trigger className={css.trigger}>
                 Для квартири підходить?
@@ -89,12 +81,7 @@ const toggleItem = (value: string) => {
             </Accordion.Content>
           </Accordion.Item>
 
-          <Accordion.Item
-            value="item-3"
-            className={css.item}
-            onMouseEnter={() => toggleItem("item-3")}
-            onMouseLeave={() => toggleItem("item-3")}
-          >
+          <Accordion.Item value="item-3" className={css.item}>
             <Accordion.Header className={css.header}>
               <Accordion.Trigger className={css.trigger}>
                 Треба обслуговувати?
@@ -116,12 +103,7 @@ const toggleItem = (value: string) => {
             </Accordion.Content>
           </Accordion.Item>
 
-          <Accordion.Item
-            value="item-4"
-            className={css.item}
-            onMouseEnter={() => toggleItem("item-4")}
-            onMouseLeave={() => toggleItem("item-4")}
-          >
+          <Accordion.Item value="item-4" className={css.item}>
             <Accordion.Header className={css.header}>
               <Accordion.Trigger className={css.trigger}>
                 Чим він кращий за інші?
@@ -145,12 +127,7 @@ const toggleItem = (value: string) => {
             </Accordion.Content>
           </Accordion.Item>
 
-          <Accordion.Item
-            value="item-5"
-            className={css.item}
-            onMouseEnter={() => toggleItem("item-5")}
-            onMouseLeave={() => toggleItem("item-5")}
-          >
+          <Accordion.Item value="item-5" className={css.item}>
             <Accordion.Header className={css.header}>
               <Accordion.Trigger className={css.trigger}>
                 Можна гасити електроприлади під напругою?

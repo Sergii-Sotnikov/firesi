@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { PhoneCall } from "lucide-react";
 
 interface FormCallValues {
   name: string;
@@ -17,8 +18,7 @@ const CallSchema = Yup.object().shape({
     .min(3, "Ім'я має містити щонайменше 3 літери")
     .max(20, "Ім'я надто довге (максимум 20 символів)")
     .required("Поле ім'я є обов’язковим"),
-  phone: Yup.string()
-    .required("Номер телефону обов'язковий"),
+  phone: Yup.string().required("Номер телефону обов'язковий"),
   message: Yup.string().max(
     500,
     "Повідомлення надто довге (максимум 500 символів)"
@@ -28,7 +28,7 @@ const CallSchema = Yup.object().shape({
 export default function Contact() {
   const initialFormCallValues: FormCallValues = {
     name: "",
-    phone: "+38",
+    phone: "+380",
     message: "",
   };
 
@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section className={css.contact}>
       <div className={css.container}>
-        <h3 className={css.title}>КОНТАКТИ</h3>
+        <h3 className={css.title}>контакти</h3>
         <div className={css.information}>
           <div className={css.mapWrapper}>
             <iframe
@@ -86,11 +86,10 @@ export default function Contact() {
                       country={"ua"}
                       value={values.phone}
                       onChange={(phone) => setFieldValue("phone", `+${phone}`)}
-                      containerClass="formPhone" // <-- ВАЖЛИВО!
+                      containerClass="formPhone"
                       inputClass="inputPhone"
                       dropdownClass="dropdown"
                       enableSearch
-                      placeholder="+38 (0XX) XXX XXXX"
                     />
                     <ErrorMessage
                       name="phone"
@@ -101,22 +100,24 @@ export default function Contact() {
 
                   <div className={css.formGroup}>
                     <Field
-                      as="textarea"
                       id="message"
                       name="message"
                       rows={8}
-                      className={css.textarea}
+                      className={css.inputMessage}
                       placeholder="Введіть Ваше повідомлення"
                     />
                     <ErrorMessage
                       name="message"
                       component="span"
-                      className={css.error}
+                      className={css.ErrorMessage}
                     />
                   </div>
 
-                  <button type="submit" className={css.button}>
-                    Замовити дзвінок
+                  <button className={css.btnContact} type="button">
+                    <span className={css.btnContactSpan}>
+                      ЗАМОВИТИ ДЗВІНОК
+                      <PhoneCall className={css.iconPhone}/>
+                    </span>
                   </button>
                 </Form>
               )}
