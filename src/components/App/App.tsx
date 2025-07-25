@@ -13,6 +13,7 @@ import Modal from "../Modal/Modal";
 import { useState } from "react";
 import Faq from "../Faq/Faq";
 import Contact from "../Contact/Contact"
+import Footer from "../Footer/Footer";
 
 export default function App() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -41,6 +42,7 @@ export default function App() {
         <Feedbacks />
         <Faq/>
         <Contact/>
+        <Footer/>
         <FloatingWidget openModal={openModal} />
         {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
       </main>

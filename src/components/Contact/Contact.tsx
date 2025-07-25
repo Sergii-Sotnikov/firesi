@@ -2,10 +2,12 @@ import css from "./Contact.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { PhoneCall } from "lucide-react";
+import { TbTruckDelivery } from "react-icons/tb";
+import { LiaMapMarkedAltSolid } from "react-icons/lia";
 
 interface FormCallValues {
   name: string;
@@ -18,7 +20,9 @@ const CallSchema = Yup.object().shape({
     .min(3, "Ім'я має містити щонайменше 3 літери")
     .max(20, "Ім'я надто довге (максимум 20 символів)")
     .required("Поле ім'я є обов’язковим"),
-  phone: Yup.string().required("Номер телефону обов'язковий"),
+  phone: Yup.string()
+    .matches(/^\+380\d{9}$/, "Введіть мінімум 8 цифр")
+    .required("Номер телефону обов'язковий"),
   message: Yup.string().max(
     500,
     "Повідомлення надто довге (максимум 500 символів)"
@@ -43,6 +47,7 @@ export default function Contact() {
 
   return (
     <section className={css.contact}>
+      <Toaster position="top-center" />
       <div className={css.container}>
         <h3 className={css.title}>контакти</h3>
         <div className={css.information}>
@@ -102,7 +107,6 @@ export default function Contact() {
                     <Field
                       id="message"
                       name="message"
-                      rows={8}
                       className={css.inputMessage}
                       placeholder="Введіть Ваше повідомлення"
                     />
@@ -113,10 +117,10 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button className={css.btnContact} type="button">
+                  <button className={css.btnContact} type="submit">
                     <span className={css.btnContactSpan}>
                       ЗАМОВИТИ ДЗВІНОК
-                      <PhoneCall className={css.iconPhone}/>
+                      <PhoneCall className={css.iconPhone} />
                     </span>
                   </button>
                 </Form>
@@ -124,6 +128,39 @@ export default function Contact() {
             </Formik>
           </div>
         </div>
+        <address className={css.details} id="Contacts">
+          <ul className={css.addressList}>
+            <li className={css.addressItem}>
+              <PhoneCall className={css.iconAddressPhone} size={42}/>
+              <a href="tel:+380989136599" className={css.addressPhone}>
+                +380989136599
+              </a>
+            </li>
+            <li className={css.addressItem}>
+              <svg
+                className={css.iconEmail}
+                width={42}
+                height={42}
+              >
+                <use href="/icons/sprite.svg#icon-email"></use>
+              </svg>
+              <a href="mailto:firesi@gmail.com" className={css.addressMail}>
+                Firesi@gmail.com
+              </a>
+            </li>
+            <li className={css.addressItem}>
+              <TbTruckDelivery className={css.iconAddressDelivery} size={42}/>
+              <p className={css.addressDeliveryText}>доставка Meest, SAT</p>
+            </li>
+            <li className={css.addressItem}>
+              <LiaMapMarkedAltSolid className={css.iconAddressLocation} size={42}/>
+              <p className={css.addressLocationText}>
+                21 Zhovkivska Street, Malekhiv. <br />
+                Lviv, Ukraine.
+              </p>
+            </li>
+          </ul>
+        </address>
       </div>
     </section>
   );

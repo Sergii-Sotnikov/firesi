@@ -1,0 +1,44 @@
+.footer {
+  padding-top: 51px;
+  padding-bottom: 33px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  width: 1140px;
+  height: 94px;
+  padding: 20px 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.footerList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footerItem {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.socials {
+  padding-top: 8px;
+}
+
+.footerLink {
+  color: #ffffff;
+  font-family: "Cera Stencil PRO";
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
