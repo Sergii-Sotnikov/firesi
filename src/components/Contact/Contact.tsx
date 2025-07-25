@@ -8,6 +8,9 @@ import "react-phone-input-2/lib/style.css";
 import { PhoneCall } from "lucide-react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 interface FormCallValues {
   name: string;
@@ -36,14 +39,40 @@ export default function Contact() {
     message: "",
   };
 
-  const handleSubmit = (
-    values: FormCallValues,
-    actions: FormikHelpers<FormCallValues>
-  ) => {
-    console.log(values);
+const handleSubmit = async (
+  values: FormCallValues,
+  actions: FormikHelpers<FormCallValues>
+) => {
+  const token = await recaptchaRef.current?.executeAsync();
+  if (!token) {
+    toast.error("Підтвердіть, що ви не робот");
+    return;
+  }
+
+  try {
+    await emailjs.send(
+      "service_rwiuc33",
+      "template_f3x1r9s",
+      {
+        ...values,
+        "g-recaptcha-response": token,
+        type: "Зворотній зв’язок",
+        time: new Date().toLocaleString("uk-UA"),
+        product: "FIRESI",
+      },
+      "sbKSEM3yamgfloOrv"
+    );
+
     toast.success("Дякуємо! Ми вам зателефонуємо.");
     actions.resetForm();
-  };
+    recaptchaRef.current?.reset();
+  } catch (error) {
+    toast.error("Помилка при відправленні. Спробуйте пізніше.");
+    console.error("EmailJS error:", error);
+  }
+};
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   return (
     <section className={css.contact}>
@@ -116,6 +145,12 @@ export default function Contact() {
                       className={css.ErrorMessage}
                     />
                   </div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6Lcd8Y4rAAAAAK9JbMZ9B3GP4uogmMs5kp-rNduO"
+                    size="normal"
+                    theme="light"
+                  />
 
                   <button className={css.btnContact} type="submit">
                     <span className={css.btnContactSpan}>
@@ -131,17 +166,13 @@ export default function Contact() {
         <address className={css.details} id="Contacts">
           <ul className={css.addressList}>
             <li className={css.addressItem}>
-              <PhoneCall className={css.iconAddressPhone} size={42}/>
+              <PhoneCall className={css.iconAddressPhone} size={42} />
               <a href="tel:+380989136599" className={css.addressPhone}>
                 +380989136599
               </a>
             </li>
             <li className={css.addressItem}>
-              <svg
-                className={css.iconEmail}
-                width={42}
-                height={42}
-              >
+              <svg className={css.iconEmail} width={42} height={42}>
                 <use href="/icons/sprite.svg#icon-email"></use>
               </svg>
               <a href="mailto:firesi@gmail.com" className={css.addressMail}>
@@ -149,11 +180,14 @@ export default function Contact() {
               </a>
             </li>
             <li className={css.addressItem}>
-              <TbTruckDelivery className={css.iconAddressDelivery} size={42}/>
+              <TbTruckDelivery className={css.iconAddressDelivery} size={42} />
               <p className={css.addressDeliveryText}>доставка Meest, SAT</p>
             </li>
             <li className={css.addressItem}>
-              <LiaMapMarkedAltSolid className={css.iconAddressLocation} size={42}/>
+              <LiaMapMarkedAltSolid
+                className={css.iconAddressLocation}
+                size={42}
+              />
               <p className={css.addressLocationText}>
                 21 Zhovkivska Street, Malekhiv. <br />
                 Lviv, Ukraine.
