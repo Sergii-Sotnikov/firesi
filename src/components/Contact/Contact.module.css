@@ -147,6 +147,11 @@
   z-index: 1;
 }
 
+.btnContact:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btnContactSpan {
   display: flex;
   flex-direction: row;

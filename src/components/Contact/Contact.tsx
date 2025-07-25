@@ -9,9 +9,9 @@ import { PhoneCall } from "lucide-react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+import { useRef, useState } from "react";
 
 interface FormCallValues {
   name: string;
@@ -34,6 +34,8 @@ const CallSchema = Yup.object().shape({
 });
 
 export default function Contact() {
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
   const initialFormCallValues: FormCallValues = {
     name: "",
     phone: "+380",
@@ -44,8 +46,7 @@ export default function Contact() {
     values: FormCallValues,
     actions: FormikHelpers<FormCallValues>
   ) => {
-    const token = await recaptchaRef.current?.executeAsync();
-    if (!token) {
+    if (!recaptchaToken) {
       toast.error("Підтвердіть, що ви не робот");
       return;
     }
@@ -56,7 +57,7 @@ export default function Contact() {
         "template_f3x1r9s",
         {
           ...values,
-          "g-recaptcha-response": token,
+          "g-recaptcha-response": recaptchaToken,
           type: "Зворотній зв’язок",
           time: new Date().toLocaleString("uk-UA"),
           product: "FIRESI",
@@ -67,6 +68,7 @@ export default function Contact() {
       toast.success("Дякуємо! Ми вам зателефонуємо.");
       actions.resetForm();
       recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
     } catch (error) {
       toast.error("Помилка при відправленні. Спробуйте пізніше.");
       console.error("EmailJS error:", error);
@@ -152,10 +154,15 @@ export default function Contact() {
                       sitekey={myKeyRECAPTCHA}
                       size="normal"
                       theme="light"
+                      onChange={(token) => setRecaptchaToken(token)}
                     />
                   )}
 
-                  <button className={css.btnContact} type="submit">
+                  <button
+                    className={css.btnContact}
+                    type="submit"
+                    disabled={!(isValid && dirty && recaptchaToken)}
+                  >
                     <span className={css.btnContactSpan}>
                       ЗАМОВИТИ ДЗВІНОК
                       <PhoneCall className={css.iconPhone} />
