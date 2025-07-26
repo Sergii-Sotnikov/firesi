@@ -14,6 +14,8 @@ import { useState } from "react";
 import Faq from "../Faq/Faq";
 import Contact from "../Contact/Contact"
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
+
 
 export default function App() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -30,6 +32,19 @@ export default function App() {
 
   return (
     <div className={css.app}>
+      <Helmet>
+        <title>FIRESI - інноваційне рішення для пожежогасіння</title>
+        <meta
+          name="description"
+          content="FIRESI - зупиняє будь-яке загоряння за секунди. Без бруду, без наслідків."
+        />
+        <link rel="canonical" href="https://www.firesi.com.ua/" />
+        <meta property="og:title" content="FIRESI - інноваційне рішення для пожежогасіння" />
+        <meta property="og:description" content="FIRESI - зупиняє будь-яке загоряння за секунди. Без бруду, без наслідків." />
+        <meta property="og:url" content="https://www.firesi.com.ua/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.firesi.com.ua/img/preview.jpg" />
+      </Helmet>
       <main className={css.main}>
         <Header />
         <Hero />
