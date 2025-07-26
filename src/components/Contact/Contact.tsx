@@ -9,9 +9,10 @@ import { PhoneCall } from "lucide-react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import ReCAPTCHA from "react-google-recaptcha";
-import emailjs from "@emailjs/browser";
 const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 import { useRef, useState } from "react";
+import sendEmail from "../../services/sendEmail"
+import type {EmailTemplateParams} from "../../types/emailService.types"
 
 interface FormCallValues {
   name: string;
@@ -51,28 +52,25 @@ export default function Contact() {
       return;
     }
 
-    try {
-      await emailjs.send(
-        "service_rwiuc33",
-        "template_f3x1r9s",
-        {
-          ...values,
-          "g-recaptcha-response": recaptchaToken,
-          type: "Зворотній зв’язок",
-          time: new Date().toLocaleString("uk-UA"),
-          product: "FIRESI",
-        },
-        "sbKSEM3yamgfloOrv"
-      );
 
-      toast.success("Дякуємо! Ми вам зателефонуємо.");
-      actions.resetForm();
-      recaptchaRef.current?.reset();
-      setRecaptchaToken(null);
-    } catch (error) {
-      toast.error("Помилка при відправленні. Спробуйте пізніше.");
-      console.error("EmailJS error:", error);
-    }
+      const emailData: EmailTemplateParams = {
+    name: values.name,
+    phone: values.phone,
+    user_message: values.message,
+    type_of_form: "Зворотній зв’язок",
+    time: new Date().toLocaleString("uk-UA"),
+    selected_product: "",
+    "g-recaptcha-response": recaptchaToken,
+  };
+
+const result = await sendEmail(emailData);
+
+  if (result) {
+    toast.success("Дякуємо! Ми вам зателефонуємо.");
+    actions.resetForm();
+    recaptchaRef.current?.reset();
+    setRecaptchaToken(null);
+  }
   };
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);

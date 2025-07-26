@@ -5,4 +5,5 @@ export interface EmailTemplateParams {
   time: string;
   selected_product?: string;
   user_message?: string;
+  [key: string]: string | undefined;
 }
