@@ -11,8 +11,8 @@ import { LiaMapMarkedAltSolid } from "react-icons/lia";
 import ReCAPTCHA from "react-google-recaptcha";
 const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 import { useRef, useState } from "react";
-import sendEmail from "../../services/sendEmail"
-import type {EmailTemplateParams} from "../../types/emailService.types"
+import sendEmail from "../../services/sendEmail";
+import type { EmailTemplateParams } from "../../types/emailService.types";
 
 interface FormCallValues {
   name: string;
@@ -52,25 +52,24 @@ export default function Contact() {
       return;
     }
 
+    const emailData: EmailTemplateParams = {
+      name: values.name,
+      phone: values.phone,
+      message: values.message,
+      type: "Зворотній зв’язок",
+      time: new Date().toLocaleString("uk-UA"),
+      product: "Відсутній",
+      "g-recaptcha-response": recaptchaToken,
+    };
 
-      const emailData: EmailTemplateParams = {
-    name: values.name,
-    phone: values.phone,
-    message: values.message,
-    type: "Зворотній зв’язок",
-    time: new Date().toLocaleString("uk-UA"),
-    product: "Відсутній",
-    "g-recaptcha-response": recaptchaToken,
-  };
+    const result = await sendEmail(emailData);
 
-const result = await sendEmail(emailData);
-
-  if (result) {
-    toast.success("Дякуємо! Ми вам зателефонуємо.");
-    actions.resetForm();
-    recaptchaRef.current?.reset();
-    setRecaptchaToken(null);
-  }
+    if (result) {
+      toast.success("Дякуємо! Ми вам зателефонуємо.");
+      actions.resetForm();
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
+    }
   };
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -150,9 +149,9 @@ const result = await sendEmail(emailData);
                     <ReCAPTCHA
                       ref={recaptchaRef}
                       sitekey={myKeyRECAPTCHA}
-                      size="normal"
-                      theme="light"
-                      onChange={(token) => setRecaptchaToken(token)}
+                      onChange={(token) => {
+                        setRecaptchaToken(token);
+                      }}
                     />
                   )}
 
