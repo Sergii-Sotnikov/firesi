@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 const SERVICE_ID = "service_rwiuc33";
 const TEMPLATE_ID = "template_f3x1r9s";
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const PUBLIC_KEY = "sbKSEM3yamgfloOrv";
 console.log("PUBLIC_KEY:", PUBLIC_KEY);
 
 export default async function sendEmail(params: EmailTemplateParams) {
