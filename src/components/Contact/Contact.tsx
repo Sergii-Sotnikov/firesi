@@ -197,7 +197,7 @@ const result = await sendEmail(emailData);
                 size={42}
               />
               <p className={css.addressLocationText}>
-                21 Zhovkivska Street, Malekhiv. <br />
+                21 Zhovkivska Street, АMalekhiv. <br />
                 Lviv, Ukraine.
               </p>
             </li>
