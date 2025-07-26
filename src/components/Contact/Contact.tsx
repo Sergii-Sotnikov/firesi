@@ -56,10 +56,10 @@ export default function Contact() {
       const emailData: EmailTemplateParams = {
     name: values.name,
     phone: values.phone,
-    user_message: values.message,
-    type_of_form: "Зворотній зв’язок",
+    message: values.message,
+    type: "Зворотній зв’язок",
     time: new Date().toLocaleString("uk-UA"),
-    selected_product: "",
+    product: "Відсутній",
     "g-recaptcha-response": recaptchaToken,
   };
 

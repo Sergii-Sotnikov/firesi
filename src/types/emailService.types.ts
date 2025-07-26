@@ -1,9 +1,9 @@
 export interface EmailTemplateParams {
   name: string;
   phone: string;
-  type_of_form: string;
+  type: string;
   time: string;
-  selected_product?: string;
-  user_message?: string;
+  product?: string;
+  message?: string;
   [key: string]: string | undefined;
 }
