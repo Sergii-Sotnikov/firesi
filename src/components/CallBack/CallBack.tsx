@@ -17,7 +17,11 @@ interface FormCallValues {
   consent: boolean;
 }
 
-export default function Callback() {
+interface CallBackProps {
+    closeSideBar: ()=> void;
+}
+
+export default function Callback({closeSideBar}:CallBackProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -67,6 +71,7 @@ export default function Callback() {
       actions.resetForm();
       recaptchaRef.current?.reset();
       setRecaptchaToken(null);
+      closeSideBar()
     }
 
   };
@@ -155,6 +160,7 @@ export default function Callback() {
               <button
                 className={css.btnContactCancel}
                 type="button"
+                onClick={closeSideBar}
               >
                 <span className={css.btnContactSpanCancel}>
                   ЗАКРИТИ 

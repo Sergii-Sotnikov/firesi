@@ -38,7 +38,7 @@ export default function FloatingWidget({
           openModal(
             <>
                 <p className={css.titleCallback}>Хочете, зателефонуємо Вам</p>
-                <Callback />
+                <Callback closeSideBar={closeSideBar}/>
             </>
           )
         }
