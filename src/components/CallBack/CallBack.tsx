@@ -1,20 +1,28 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import { PhoneCall } from "lucide-react";
 import { useRef, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import css from "./CallBack.module.css";
-import type { FormikHelpers } from 'formik';
+import type { FormikHelpers } from "formik";
+import sendEmail from "../../services/sendEmail";
+import type { EmailTemplateParams } from "../../types/emailService.types";
+
+
+interface FormCallValues {
+  name: string;
+  phone: string;
+  consent: boolean;
+}
 
 export default function Callback() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-  const initialcallBackValues = {
+  const initialcallBackValues: FormCallValues= {
     name: "",
     phone: "+380",
     consent: false,
@@ -25,7 +33,7 @@ export default function Callback() {
       .min(3, "Ім'я має містити щонайменше 3 літери")
       .required("Поле ім'я є обов’язковим"),
     phone: Yup.string()
-      .matches(/^\+380\d{9}$/, "Номер повинен бути формату +380XXXXXXXXX")
+      .matches(/^\+380\d{9}$/, "Номер повинен бути у форматі +380XXXXXXXXX")
       .required("Номер телефону обов'язковий"),
     consent: Yup.boolean().oneOf(
       [true],
@@ -34,19 +42,33 @@ export default function Callback() {
   });
 
   const handleSubmit = async (
-  values: typeof initialcallBackValues,
-  actions: FormikHelpers<typeof initialcallBackValues>
-) => {
+    values: FormCallValues,
+    actions: FormikHelpers<FormCallValues>
+  ) => {
     if (!recaptchaToken) {
       toast.error("Підтвердіть, що ви не робот");
       return;
     }
 
-    console.log("Дані для дзвінка:", values);
-    toast.success("Ми вам зателефонуємо!");
-    actions.resetForm();
-    recaptchaRef.current?.reset();
-    setRecaptchaToken(null);
+        const emailData: EmailTemplateParams = {
+          name: values.name,
+          phone: values.phone,
+          message: "Відсутній",
+          type: "Хочете, зателефонуємо Вам",
+          time: new Date().toLocaleString("uk-UA"),
+          product: "Відсутній",
+          "g-recaptcha-response": recaptchaToken,
+        };
+
+    const result = await sendEmail(emailData as unknown as Record<string, unknown>);
+
+    if (result) {
+      toast.success("Ми вам зателефонуємо!");
+      actions.resetForm();
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
+    }
+
   };
 
   return (
@@ -58,16 +80,18 @@ export default function Callback() {
           onSubmit={handleSubmit}
           validationSchema={CallSchema}
         >
-          {({ values, setFieldValue, isValid, dirty }) => (
+          {({ isValid, dirty }) => (
             <Form className={css.form}>
-              <div className={css.formGroup}>
-                <Field
-                  id="name"
-                  type="text"
-                  name="name"
-                  className={css.inputName}
-                  placeholder="введіть ІМ'Я"
-                />
+              <div className={css.formName}>
+                <label className={css.labelName} htmlFor="name">
+                  Ваше імя:
+                  <Field
+                    id="name"
+                    type="text"
+                    name="name"
+                    className={css.inputName}
+                  />
+                </label>
                 <ErrorMessage
                   name="name"
                   component="span"
@@ -76,15 +100,17 @@ export default function Callback() {
               </div>
 
               <div className={css.formPhone}>
-                <PhoneInput
-                  country={"ua"}
-                  value={values.phone}
-                  onChange={(phone) => setFieldValue("phone", `+${phone}`)}
-                  containerClass="formPhone"
-                  inputClass="inputPhone"
-                  dropdownClass="dropdown"
-                  enableSearch
-                />
+                <label className={css.labelPhone} htmlFor="phone">
+                  Ваш телефон:
+                  <Field
+                    id="phone"
+                    type="text"
+                    name="phone"
+                    className={css.inputPhone}
+                    placeholder="+380XXXXXXXXX"
+                    maxLength={13}
+                  />
+                </label>
                 <ErrorMessage
                   name="phone"
                   component="span"
@@ -115,7 +141,7 @@ export default function Callback() {
                   onChange={(token) => setRecaptchaToken(token)}
                 />
               )}
-
+              <div className={css.buttonGroup}>
               <button
                 className={css.btnContact}
                 type="submit"
@@ -126,6 +152,15 @@ export default function Callback() {
                   <PhoneCall className={css.iconPhone} />
                 </span>
               </button>
+              <button
+                className={css.btnContactCancel}
+                type="button"
+              >
+                <span className={css.btnContactSpanCancel}>
+                  ЗАКРИТИ 
+                </span>
+              </button>
+              </div>
             </Form>
           )}
         </Formik>

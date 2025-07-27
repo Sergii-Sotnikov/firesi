@@ -5,5 +5,6 @@ export interface EmailTemplateParams {
   time: string;
   product?: string;
   message?: string;
-  [key: string]: string | undefined;
+  consent?: boolean;
+  "g-recaptcha-response": string;
 }

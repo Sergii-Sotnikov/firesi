@@ -62,7 +62,7 @@ export default function Contact() {
       "g-recaptcha-response": recaptchaToken,
     };
 
-    const result = await sendEmail(emailData);
+    const result = await sendEmail(emailData as unknown as Record<string, unknown>);
 
     if (result) {
       toast.success("Дякуємо! Ми вам зателефонуємо.");

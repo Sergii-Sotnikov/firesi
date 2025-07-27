@@ -1,4 +1,4 @@
-import type { EmailTemplateParams } from "../types/emailService.types";
+
 import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
 
@@ -9,7 +9,7 @@ const TEMPLATE_ID = "template_hi8xlka";
 const PUBLIC_KEY = "sbKSEM3yamgfloOrv";
 
 
-export default async function sendEmail(params: EmailTemplateParams) {
+export default async function sendEmail(params: Record<string, unknown>) {
   try {
     const response = await emailjs.send(
       SERVICE_ID,
