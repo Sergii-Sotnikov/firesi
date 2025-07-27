@@ -72,7 +72,7 @@ export default function App() {
         <Faq/>
         <Contact/>
         <Footer/>
-        <FloatingWidget openModal={openModal} openSideBar={openSideBar} closeSideBar={closeSideBar} isSideBarOpen={isOpenSideBar}/>
+        <FloatingWidget openModal={openModal} openSideBar={openSideBar} closeSideBar={closeSideBar} closeModal={closeModal} isSideBarOpen={isOpenSideBar}/>
         {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
         {isOpenSideBar && <ModalSideBar closeSideBar={closeSideBar}>{sideBarContent}</ModalSideBar>}
       </main>

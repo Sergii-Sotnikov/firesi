@@ -10,7 +10,6 @@ import type { FormikHelpers } from "formik";
 import sendEmail from "../../services/sendEmail";
 import type { EmailTemplateParams } from "../../types/emailService.types";
 
-
 interface FormCallValues {
   name: string;
   phone: string;
@@ -18,15 +17,15 @@ interface FormCallValues {
 }
 
 interface CallBackProps {
-    closeSideBar: ()=> void;
+  closeModal: () => void;
 }
 
-export default function Callback({closeSideBar}:CallBackProps) {
+export default function Callback({ closeModal }: CallBackProps) {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const myKeyRECAPTCHA = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-  const initialcallBackValues: FormCallValues= {
+  const initialcallBackValues: FormCallValues = {
     name: "",
     phone: "+380",
     consent: false,
@@ -54,26 +53,27 @@ export default function Callback({closeSideBar}:CallBackProps) {
       return;
     }
 
-        const emailData: EmailTemplateParams = {
-          name: values.name,
-          phone: values.phone,
-          message: "Відсутній",
-          type: "Хочете, зателефонуємо Вам",
-          time: new Date().toLocaleString("uk-UA"),
-          product: "Відсутній",
-          "g-recaptcha-response": recaptchaToken,
-        };
+    const emailData: EmailTemplateParams = {
+      name: values.name,
+      phone: values.phone,
+      message: "Відсутній",
+      type: "Хочете, зателефонуємо Вам",
+      time: new Date().toLocaleString("uk-UA"),
+      product: "Відсутній",
+      "g-recaptcha-response": recaptchaToken,
+    };
 
-    const result = await sendEmail(emailData as unknown as Record<string, unknown>);
+    const result = await sendEmail(
+      emailData as unknown as Record<string, unknown>
+    );
 
     if (result) {
       toast.success("Ми вам зателефонуємо!");
       actions.resetForm();
       recaptchaRef.current?.reset();
       setRecaptchaToken(null);
-      closeSideBar()
+      closeModal();
     }
-
   };
 
   return (
@@ -147,25 +147,25 @@ export default function Callback({closeSideBar}:CallBackProps) {
                 />
               )}
               <div className={css.buttonGroup}>
-              <button
-                className={css.btnContact}
-                type="submit"
-                disabled={!(isValid && dirty && recaptchaToken)}
-              >
-                <span className={css.btnContactSpan}>
-                  ЗАМОВИТИ ДЗВІНОК
-                  <PhoneCall className={css.iconPhone} />
-                </span>
-              </button>
-              <button
-                className={css.btnContactCancel}
-                type="button"
-                onClick={closeSideBar}
-              >
-                <span className={css.btnContactSpanCancel}>
-                  ЗАКРИТИ 
-                </span>
-              </button>
+                <button
+                  className={css.btnContact}
+                  type="submit"
+                  disabled={!(isValid && dirty && recaptchaToken)}
+                >
+                  <span className={css.btnContactSpan}>
+                    ЗАМОВИТИ ДЗВІНОК
+                    <PhoneCall className={css.iconPhone} />
+                  </span>
+                </button>
+                <button
+                  className={css.btnContactCancel}
+                  type="button"
+                  onClick={() => {
+                    closeModal();
+                  }}
+                >
+                  <span className={css.btnContactSpanCancel}>ЗАКРИТИ</span>
+                </button>
               </div>
             </Form>
           )}

@@ -10,12 +10,14 @@ interface FloatingWidgetProps {
   openModal: (content: React.ReactNode) => void;
   openSideBar: (content: React.ReactNode) => void;
   closeSideBar: () => void;
+  closeModal: () => void;
   isSideBarOpen: boolean;
 }
 
 export default function FloatingWidget({
   isSideBarOpen,
   closeSideBar,
+  closeModal,
   openModal,
   openSideBar,
 }: FloatingWidgetProps) {
@@ -38,7 +40,7 @@ export default function FloatingWidget({
           openModal(
             <>
                 <p className={css.titleCallback}>Хочете, зателефонуємо Вам</p>
-                <Callback closeSideBar={closeSideBar}/>
+                <Callback closeModal={closeModal}/>
             </>
           )
         }
