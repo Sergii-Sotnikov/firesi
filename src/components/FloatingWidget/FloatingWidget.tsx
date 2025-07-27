@@ -1,17 +1,27 @@
-import css from "./FloatingWidget.module.css"
+import css from "./FloatingWidget.module.css";
 import { IoIosCall } from "react-icons/io";
 import { TbMessageCircleFilled } from "react-icons/tb";
 import { useEffect, useState } from "react";
+import { IoIosCloseCircle } from "react-icons/io";
+import Callback from "../CallBack/CallBack";
+import MessengerLinks from "../MessengerLinks/MessengerLinks";
 
 interface FloatingWidgetProps {
   openModal: (content: React.ReactNode) => void;
+  openSideBar: (content: React.ReactNode) => void;
+  closeSideBar: () => void;
+  isSideBarOpen: boolean;
 }
 
-export default function FloatingWidget( { openModal }: FloatingWidgetProps){
-    const [isShaking, setIsShaking] = useState(false);
+export default function FloatingWidget({
+  isSideBarOpen,
+  closeSideBar,
+  openModal,
+  openSideBar,
+}: FloatingWidgetProps) {
+  const [isShaking, setIsShaking] = useState(false);
 
-
-      useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 1000);
@@ -20,20 +30,37 @@ export default function FloatingWidget( { openModal }: FloatingWidgetProps){
     return () => clearInterval(interval);
   }, []);
 
-    return(
-        <div className={css.floatingWrapper}>
-            <button className={css.call} onClick={() =>
-                openModal(
-                    <>
-                    <p>HELLO</p>
-                    </>
-                )
-            }>
-                <IoIosCall size={30} className={isShaking ? css.shake : ""} />
-            </button>
-            <button className={css.messenger}>
-                <TbMessageCircleFilled size={30}/>
-            </button>
-        </div>)
-
-      }
+  return (
+    <div className={css.floatingWrapper}>
+      <button
+        className={css.call}
+        onClick={() =>
+          openModal(
+            <>
+                <p className={css.titleCallback}>Хочете, зателефонуємо Вам</p>
+                <Callback />
+            </>
+          )
+        }
+      >
+        <IoIosCall size={30} className={isShaking ? css.shake : ""} />
+      </button>
+      <button
+        className={css.messenger}
+        onClick={() => {
+          if (isSideBarOpen) {
+            closeSideBar();
+          } else {
+            openSideBar(<MessengerLinks />);
+          }
+        }}
+      >
+        {isSideBarOpen ? (
+          <IoIosCloseCircle size={30} />
+        ) : (
+          <TbMessageCircleFilled size={30} />
+        )}
+      </button>
+    </div>
+  );
+}

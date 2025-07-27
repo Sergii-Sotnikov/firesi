@@ -14,12 +14,16 @@ import { useState } from "react";
 import Faq from "../Faq/Faq";
 import Contact from "../Contact/Contact"
 import Footer from "../Footer/Footer";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import ModalSideBar from "../ModalSideBar/ModalSideBar";
 
 
 export default function App() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+  const [isOpenSideBar, setIsOpenSideBar] = useState<boolean>(false)
+  const [sideBarContent, setSideBarContent] =useState<React.ReactNode>(null);
+
 
   const openModal = (content: React.ReactNode) => {
     setIsOpenModal(true);
@@ -29,6 +33,16 @@ export default function App() {
     setIsOpenModal(false);
     setModalContent(null);
   };
+
+  const openSideBar = (content: React.ReactNode) => {
+    setIsOpenSideBar(true);
+    setSideBarContent(content)
+  };
+
+  const closeSideBar = () => {
+    setIsOpenSideBar(false);
+    setSideBarContent(null);
+  }
 
   return (
     <div className={css.app}>
@@ -58,8 +72,9 @@ export default function App() {
         <Faq/>
         <Contact/>
         <Footer/>
-        <FloatingWidget openModal={openModal} />
+        <FloatingWidget openModal={openModal} openSideBar={openSideBar} closeSideBar={closeSideBar} isSideBarOpen={isOpenSideBar}/>
         {isOpenModal && <Modal closeModal={closeModal}>{modalContent}</Modal>}
+        {isOpenSideBar && <ModalSideBar closeSideBar={closeSideBar}>{sideBarContent}</ModalSideBar>}
       </main>
     </div>
   );
