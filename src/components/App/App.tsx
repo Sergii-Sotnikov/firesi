@@ -14,7 +14,7 @@ import { useState } from "react";
 import Faq from "../Faq/Faq";
 import Contact from "../Contact/Contact"
 import Footer from "../Footer/Footer";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import ModalSideBar from "../ModalSideBar/ModalSideBar";
 
 
